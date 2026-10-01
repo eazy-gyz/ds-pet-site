@@ -22,7 +22,7 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}   /* 兜底：任何情况下都不让整页被撑宽 */
 section[id],header[id]{scroll-margin-top:86px}   /* 别被吸顶导航盖住 */
 body{
   background:var(--bg);
@@ -297,6 +297,16 @@ a:hover{text-decoration:underline}
   .hero-btns{flex-direction:column;align-items:stretch;width:100%}
   .hero-btns .btn{width:100%}
   .playground-bar span{display:none}
+  /* 手机上的长文本瘦身，别挤爆一行 */
+  .badge{font-size:12px;padding:5px 11px;max-width:100%;line-height:1.5;white-space:normal}
+  .hero-sub{font-size:14.5px}
+  .sec h2{font-size:24px}
+  .lead,.ticks li{font-size:15px}
+  .stat b{font-size:26px}
+  .stats{gap:10px}
+  .card{padding:20px 18px}
+  .playground-note{font-size:12px;padding:10px 12px}
+  .foot-note{font-size:12.5px}
   .hero{padding-top:52px}
   .hero-btns{width:100%}
   .hero-btns .btn{flex:1 1 auto}
