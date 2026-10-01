@@ -29,6 +29,7 @@
     <a href="#notify">通知播报</a>
     <a href="#play">玩法</a>
     <a href="#privacy">隐私</a>
+    <a href="#changelog">更新日志</a>
     <a href="#faq">常见问题</a>
   </div>
   <a class="btn btn-primary btn-sm" href="#download">免费下载</a>
@@ -264,9 +265,10 @@
       <div class="card dl-card reveal">
         <div class="dl-icon">🤖</div>
         <h3>安卓版</h3>
-        <p>vivo 应用商店已上架，1.2 版本</p>
-        <a class="btn btn-primary" data-link="android">去应用商店下载</a>
-        <p class="tiny" data-note="android"></p>
+        <p>1.2 版 · 64.2 MB · Android 8.0 及以上</p>
+        <a class="btn btn-primary" data-link="android">vivo 应用商店下载</a>
+        <a class="btn btn-ghost" data-link="apk" download="DS桌宠-1.2.apk">直接下载 APK</a>
+        <p class="tiny">装不上商店版就走这个<br><span class="mono">SHA256 BFFCBD99…E7A65A7C</span></p>
       </div>
       <div class="card dl-card reveal" style="--d:.05s">
         <div class="dl-icon">🍎</div>
@@ -281,6 +283,47 @@
         <p>不用装东西，打开就能看她玩</p>
         <a class="btn btn-ghost" data-link="web" target="_blank" rel="noopener">打开网页版</a>
         <p class="tiny">手机浏览器打开还能「添加到主屏幕」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 更新日志 ============ -->
+<section class="sec" id="changelog">
+  <div class="wrap narrow">
+    <p class="kicker reveal">更新日志</p>
+    <h2 class="reveal" style="--d:.05s">每一版都改了什么</h2>
+
+    <div class="log reveal" style="--d:.1s">
+      <div class="log-item">
+        <div class="log-ver"><b>1.2</b><span>2026-09-30 · 最新</span></div>
+        <ul>
+          <li>设置页焕新：清爽的浅色界面，「放出 / 收回」改成一对圆形按钮，桌宠默认大小调整为 <b>50%</b></li>
+          <li>碎碎念 <b>127 → 207 句</b>：新增 80 条网络热梗，语音同步重新合成</li>
+          <li>摇一摇灵敏度提高（阈值 900 → 550），随手一甩就能把她扔出去</li>
+          <li>修复：<b>锁屏后仍会播放声音</b></li>
+          <li>锁屏后自动暂停动作与碎碎念（实测 CPU 从约 120% 降到 0）</li>
+        </ul>
+      </div>
+
+      <div class="log-item">
+        <div class="log-ver"><b>1.1</b><span>2026-09</span></div>
+        <ul>
+          <li>新增碎碎念语音：晓伊音色、127 条、离线预合成，点一下就出声</li>
+          <li>新增「摇一摇」互动：甩动手机她会在屏幕里滚出去</li>
+          <li>新增隐私政策弹窗与权限用途告知（隐私合规）</li>
+          <li>修复：头顶有气泡时拖不动她</li>
+          <li>收窄触摸区域，点击更精准</li>
+        </ul>
+      </div>
+
+      <div class="log-item">
+        <div class="log-ver"><b>1.0</b><span>2026-09</span></div>
+        <ul>
+          <li>首个正式版，上架 vivo 应用商店</li>
+          <li>改用 <b>VP9 原生 alpha</b> 透明方案，根治别人手机上的绿边与锯齿</li>
+          <li>106 个动作、物理系统（走动 / 抛飞 / 撞墙反弹）、贴边躲藏、通知播报</li>
+        </ul>
       </div>
     </div>
   </div>
