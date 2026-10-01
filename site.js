@@ -20,9 +20,10 @@
     web: 'pet/index.html'
   };
 
-  // 素材 CDN：实测 gcore 节点在国内最快（比 GitHub Pages 快约 2 倍）
-  // 不想用 CDN 就把它改成 ''，会自动回退到跟页面放一起的本地素材
-  var ASSET_CDN = 'https://gcore.jsdelivr.net/gh/eazy-gyz/ds-pet-site@main/pet/assets/';
+  // 素材 CDN：jsDelivr 在国内有时快有时直接连不上（实测过一次完全打不开），
+  // 而且视频压到 1/4 体积后本地也够快了，所以**默认不用 CDN**（更稳）。
+  // 想试的话把地址填回来即可，pet.js 里还有「CDN 挂了自动回退本地」的保护。
+  var ASSET_CDN = '';
 
   function applyLinks() {
     var nodes = document.querySelectorAll('[data-link]');
