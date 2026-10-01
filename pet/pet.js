@@ -498,15 +498,22 @@
 
   function unlockAudio() {
     if (audioOK || !VOICE_ON) return;
-    audioOK = true;
-    // 用一段极短的静音把音频通道"点亮"，之后自动播放才不会被拦
+    // 用一段极短的静音把音频通道"点亮"，之后自动播放才不会被拦。
+    // ★ 只有真的播成功了才算解锁 —— 失败的话下次触摸会再试
+    //   （iframe / 自动播放策略下，第一次经常是失败的）
     try {
       var a = new Audio('assets/v001.mp3');
       a.volume = 0;
       var p = a.play();
       if (p && p.then) {
-        p.then(function () { try { a.pause(); } catch (e) {} })
-         .catch(function () {});
+        p.then(function () {
+          audioOK = true;
+          try { a.pause(); } catch (e) {}
+        }).catch(function () {
+          // 这次没成：保持 audioOK = false，下次触摸继续试
+        });
+      } else {
+        audioOK = true;
       }
     } catch (e) {}
   }
@@ -1162,13 +1169,12 @@
     document.addEventListener('touchend', onUp, { passive: false });
     document.addEventListener('touchcancel', onUp, { passive: false });
 
-    // ★ 保险：万一系统把自动播放拦掉了，第一次触摸就手动把她唤醒；
-    //   顺便把音频解锁（iOS 规定必须先有一次用户操作才允许出声）。
+    // ★ 保险：万一系统把自动播放拦掉了，触摸就手动把她唤醒；
+    //   顺便把音频解锁（浏览器/iOS 规定必须先有一次用户操作才允许出声）。
+    //   注意：**不注销**这个监听 —— 解锁失败时，下一次触摸还要再试一遍。
     var kick = function () {
       try { if (video.paused) video.play().catch(function () {}); } catch (e) {}
       unlockAudio();
-      document.removeEventListener('touchstart', kick);
-      document.removeEventListener('mousedown', kick);
     };
     document.addEventListener('touchstart', kick, { passive: true });
     document.addEventListener('mousedown', kick, { passive: true });
@@ -1302,7 +1308,11 @@
     S.lastUserAt = now();
     S.nextEdgeTry = now() + EDGE_IDLE_MS;
     // 启动后 10~20 秒先碎碎念一句，方便确认功能正常
-    S.nextWhisper = now() + rand(10000, 20000);
+    // 官网试玩区：让她开屏后 3~6 秒就念叨第一句，好让人马上听到声音
+    S.nextWhisper = now() + rand(3000, 6000);
+    // 顺手试着把音频解锁一次：浏览器若放行（iframe 带了 allow="autoplay"）她就能直接出声；
+    // 被拦了也没关系，audioOK 会保持 false，等她被摸一下再重试
+    unlockAudio();
 
     // ★ 主循环不在这里起：要等第一个动画解码出来、判定完渲染方式再起
     waitAndDetect(0);

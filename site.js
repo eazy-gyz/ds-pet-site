@@ -10,8 +10,8 @@
   /* ============ 1. 下载链接：只改这里 ============ */
 
   var LINKS = {
-    // vivo 应用商店的应用详情页地址（拿到后填进这对引号里）
-    android: '',
+    // vivo 应用商店的应用详情页地址
+    android: 'https://h5coml.vivo.com.cn/h5coml/appdetail_h5/browser_v2/index.html?appId=5259965&resource=301&source=7',
     // 安卓 APK 直链（可选；填了的话，安卓卡片会多一句「或直接下载 APK」）
     apk: '',
     // iOS 版：GitHub 上的未签名 IPA（已可用）
@@ -91,9 +91,9 @@
     var toggle = document.getElementById('playToggle');
     if (!frame || !box) return;
 
-    // 按框的实际宽度算她该多大（手机上不能比框还宽）
+    // 按框的实际宽度算她该多大（手机上不能比框还宽），再乘 0.5 缩小一倍
     var w = frame.clientWidth || box.clientWidth || 900;
-    var scale = Math.max(0.6, Math.min(1.2, w / 780));
+    var scale = Math.max(0.42, Math.min(0.62, (w / 780) * 0.5));
     frame.src = (frame.getAttribute('data-src') || 'pet/index.html') +
                 '?scale=' + scale.toFixed(2);
 
