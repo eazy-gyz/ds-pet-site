@@ -12,8 +12,8 @@
   var LINKS = {
     // vivo 应用商店的应用详情页地址
     android: 'https://h5coml.vivo.com.cn/h5coml/appdetail_h5/browser_v2/index.html?appId=5259965&resource=301&source=7',
-    // 安卓 APK 直链（放在仓库里，跟着站点走 CDN，国内下载也快）
-    apk: 'download/dspet-1.2.apk',
+    // 安卓 APK 直链：放 GitHub Release（EdgeOne 单文件上限 25 MiB，放不进网站仓库）
+    apk: 'https://github.com/eazy-gyz/ds-pet-site/releases/download/v1.2/dspet-1.2.apk',
     // iOS 版：GitHub 上的未签名 IPA（已可用）
     ios: 'https://github.com/eazy-gyz/dspet-ios/releases/latest',
     // 网页版
