@@ -20,6 +20,10 @@
     web: 'pet/index.html'
   };
 
+  // 素材 CDN：实测 gcore 节点在国内最快（比 GitHub Pages 快约 2 倍）
+  // 不想用 CDN 就把它改成 ''，会自动回退到跟页面放一起的本地素材
+  var ASSET_CDN = 'https://gcore.jsdelivr.net/gh/eazy-gyz/ds-pet-site@main/pet/assets/';
+
   function applyLinks() {
     var nodes = document.querySelectorAll('[data-link]');
     for (var i = 0; i < nodes.length; i++) {
@@ -94,8 +98,10 @@
     // 按框的实际宽度算她该多大（手机上不能比框还宽），再乘 0.5 缩小一倍
     var w = frame.clientWidth || box.clientWidth || 900;
     var scale = Math.max(0.42, Math.min(0.62, (w / 780) * 0.5));
-    frame.src = (frame.getAttribute('data-src') || 'pet/index.html') +
-                '?scale=' + scale.toFixed(2);
+    var src = (frame.getAttribute('data-src') || 'pet/index.html') +
+              '?scale=' + scale.toFixed(2);
+    if (ASSET_CDN) src += '&assets=' + encodeURIComponent(ASSET_CDN);
+    frame.src = src;
 
     // 默认不接管鼠标/手指，点「开始试玩」才让她接管
     if (toggle) {
