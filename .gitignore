@@ -4,3 +4,6 @@ _dl.ipa
 *.log
 .DS_Store
 Thumbs.db
+
+# 本地部署脚本
+部署到VibeDrop.ps1
