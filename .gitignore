@@ -11,3 +11,6 @@ Thumbs.db
 # 本地工具（传 Release 用，不入库）
 _上传1.3APK.ps1
 _dspet-*.apk
+
+# 本地图片处理脚本 / 中间产物
+_图/
