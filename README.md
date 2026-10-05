@@ -70,6 +70,25 @@ var LINKS = {
 - 网页里用 `.poster` 容器（**不要用 `.phone`**，否则会变成双框）：无需边框，只给圆角 + 投影
 - 单张 340~380 KB，5 张合计约 1.8 MB —— 全站接近 VibeDrop 的 25 MB 上限，加东西前先量体积
 
+### ⚠️ 换图后一定要改版本号（踩过的坑）
+
+VibeDrop（Cloudflare）返回的响应头是：
+
+```
+index.html : Cache-Control: public, max-age=60
+img/*.jpg  : Cache-Control: public, max-age=3600     ← 图片要缓存 1 小时！
+```
+
+所以**用同名文件覆盖图片后，用户浏览器里还是旧图**（这次换个图就被这个坑了一次）。
+做法：把 `index.html` 里的 `?v=` 参数换一个值（改用当天日期最省事），
+图片 / `site.css` / `site.js` 全都要带：
+
+```
+src="img/setup.jpg?v=20261005b"   href="site.css?v=20261005b"   src="site.js?v=20261005b"
+```
+
+本地工具：`_图\加版本号.py`（把里面的 V 改成新值再跑一次即可）。
+
 ---
 
 ## 目录结构
