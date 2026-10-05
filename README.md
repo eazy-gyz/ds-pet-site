@@ -26,7 +26,8 @@ git remote add origin git@github.com:<你的用户名>/ds-pet-site.git
 git push -u origin main
 ```
 
-> ⚠️ 全站 **144 MB**（106 个 webm + 106 个 mov + 207 条语音），
+> ⚠️ 全站约 **22.6 MB**（试玩区只放 24 个动作：24 个 webm + 24 个 mov）。
+> 本站要部署到 VibeDrop 免费版，**上限 25 MB**，加东西前先量体积。
 > 第一次 push 会比代码仓库慢一些，断了就再 `git push` 一次（会续传）。
 
 3. 仓库 **Settings → Pages** → Source 选 **Deploy from a branch** →
@@ -55,8 +56,15 @@ var LINKS = {
 
 ### 文案 / 数字
 
-- 碎碎念条数、动作数等在 `index.html` 里搜 `106` / `207` 就能找到
+- 动作数 / 碎碎念 / 语音条数等在 `index.html` 里搜 `139` / `207` / `351` 就能找到
 - 玩法表格在 `<section id="play">` 里，加一行 `<div class="tr">…</div>` 即可
+- 五大功能板块（桌宠设置 / 玩法简介 / 自定义 / 通知气泡 / 一键分享）依次是
+  `#setup` `#howto` `#soul` `#notify` `#share`，截图对应 `img/setup.jpg` 等
+
+### 换新截图时
+
+原图（1172×2748）先缩到 **600px 宽、JPEG 质量 86** 再放进 `img/`，
+否则 5 张原图就把 VibeDrop 的 25 MB 撑爆了。
 
 ---
 
@@ -67,15 +75,14 @@ ds-pet-site/
 ├── index.html              官网首页
 ├── site.css                官网样式（含滚动渐入渐出）
 ├── site.js                 链接配置 + 滚动动画 + 试玩区开关
-├── img/                    商店截图 + 图标
+├── img/                    图标 + 1.3 五大功能截图（setup / howto / soul / notify / share）
 └── pet/                    试玩区（iframe 里跑的那一页）
     ├── index.html
     ├── pet.css             = 安卓版 style.css + 试玩区覆盖
     ├── pet.js              = 网页版播放器（多一个 ?scale= 参数）
     └── assets/
-        ├── a001..a106.webm  桌面 / 安卓：VP9-alpha，原生透明
-        ├── a001..a106.mov   iPhone / iPad：HEVC-alpha，原生透明
-        └── v001..v207.mp3   碎碎念语音
+        ├── a002..a105.webm  桌面 / 安卓：VP9-alpha，原生透明
+        └── a002..a105.mov   iPhone / iPad：HEVC-alpha，原生透明
 ```
 
 ### 为什么两套视频

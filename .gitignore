@@ -7,3 +7,7 @@ Thumbs.db
 
 # 本地部署脚本
 部署到VibeDrop.ps1
+
+# 本地工具（传 Release 用，不入库）
+_上传1.3APK.ps1
+_dspet-*.apk
