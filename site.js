@@ -17,9 +17,9 @@
     // 国内加速（实测 26 KB/s → 306 KB/s，12 倍）。原始地址保留在上面，万一镜像挂了还能用。
     apkFast: 'https://ghfast.top/https://github.com/eazy-gyz/ds-pet-site/releases/download/v1.3/dspet-1.3.apk',
     // iOS 版：GitHub 上的未签名 IPA（已可用）
-    ios: 'https://github.com/eazy-gyz/dspet-ios/releases/latest',
+    ios: 'iphone.html',
     // 网页版
-    web: 'pet/index.html'
+    web: 'https://xq4ca84j.vibedrop.site/'
   };
 
   // 素材 CDN：jsDelivr 在国内有时快有时直接连不上（实测过一次完全打不开），

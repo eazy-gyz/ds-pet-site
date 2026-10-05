@@ -25,6 +25,7 @@
 html{scroll-behavior:smooth;overflow-x:hidden}   /* 兜底：任何情况下都不让整页被撑宽 */
 section[id],header[id]{scroll-margin-top:86px}   /* 别被吸顶导航盖住 */
 body{
+  padding-top:56px;              /* 固定页眉占的高度 */
   background:var(--bg);
   color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
@@ -54,7 +55,9 @@ a:hover{text-decoration:underline}
 
 /* ---------------- 导航 ---------------- */
 .nav{
-  position:sticky; top:0; z-index:50;
+  /* ★ 原来是 sticky，但 html/body 的 overflow-x:hidden 会把它废掉 →
+     改成真正固定（下面的 body padding-top 用来补高度） */
+  position:fixed; left:0; right:0; top:0; z-index:50;
   display:flex; align-items:center; gap:22px;
   padding:12px max(24px, calc((100% - 1120px)/2 + 24px));
   background:rgba(8,12,18,.72);
@@ -308,7 +311,7 @@ a:hover{text-decoration:underline}
   .playground-frame{height:360px}
 }
 @media (max-width:600px){
-  body{font-size:15.5px}
+  body{font-size:15.5px; padding-top:50px}
   /* 手机：图标 + 链接行 + 不放下载按钮（首屏就是大按钮，不重复） */
   .nav{padding:9px 12px;gap:8px}
   .nav-logo img{width:26px;height:26px;border-radius:8px}
