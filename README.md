@@ -7,8 +7,8 @@
 
 ## 本地预览
 
-```powershell
-python -m http.server 8849 --directory D:\AndroidDev\ds-pet-site
+```bash
+python3 -m http.server 8849 --directory ~/AndroidDev/ds-pet-site
 ```
 
 然后浏览器打开 `http://127.0.0.1:8849/`（手机连同一个 Wi-Fi 也能看：`http://<电脑IP>:8849/`）
@@ -20,8 +20,8 @@ python -m http.server 8849 --directory D:\AndroidDev\ds-pet-site
 1. 在 GitHub 建一个**空仓库**，名字比如 `ds-pet-site`（不要勾 README）
 2. 本地推上去：
 
-```powershell
-cd D:\AndroidDev\ds-pet-site
+```bash
+cd ~/AndroidDev/ds-pet-site
 git remote add origin git@github.com:<你的用户名>/ds-pet-site.git
 git push -u origin main
 ```
